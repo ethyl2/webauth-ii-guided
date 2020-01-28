@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const Users = require('../users/users-model.js');
 
 module.exports = (req, res, next) => {
+  console.log(req.session);
   const { username, password } = req.headers;
 
   if (username && password) {
