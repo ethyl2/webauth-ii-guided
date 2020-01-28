@@ -4,6 +4,12 @@ const Users = require('../users/users-model.js');
 
 module.exports = (req, res, next) => {
   console.log(req.session);
+  if (req.session && req.session.username) {
+    next();
+  } else {
+    res.status(401).json({"message": "You shalt not pass!"})
+  }
+  /*
   const { username, password } = req.headers;
 
   if (username && password) {
@@ -22,4 +28,5 @@ module.exports = (req, res, next) => {
   } else {
     res.status(400).json({ message: 'No credentials provided' });
   }
+  */
 };
